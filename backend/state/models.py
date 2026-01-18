@@ -150,7 +150,7 @@ class Message(Base):
 
     role = Column(String(20), nullable=False)  # user/assistant/system
     content = Column(Text, nullable=False)
-    metadata = Column(JSON, default=dict)
+    meta = Column("metadata", JSON, default=dict)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
@@ -162,7 +162,7 @@ class KnowledgeDocument(Base):
     id = Column(String(36), primary_key=True)
     title = Column(String(255), nullable=False)
     content = Column(Text, nullable=False)
-    metadata = Column(JSON, default=dict)
+    meta = Column("metadata", JSON, default=dict)
 
     # Vector store reference
     vector_id = Column(String(255), nullable=True)

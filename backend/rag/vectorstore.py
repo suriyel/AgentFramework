@@ -3,10 +3,10 @@ RAG Vector Store - Chroma 集成
 用于领域知识检索
 """
 from typing import List, Dict, Any, Optional
-from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import Document
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.documents import Document
 from loguru import logger
 from backend.config.settings import settings
 import os

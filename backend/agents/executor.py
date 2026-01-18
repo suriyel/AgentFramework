@@ -3,7 +3,7 @@ Executor Agent - 任务执行 Agent
 负责：Tool 选择、参数填充、执行调度、重试机制
 """
 from typing import Dict, Any, Optional
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from loguru import logger
 from datetime import datetime
 import asyncio

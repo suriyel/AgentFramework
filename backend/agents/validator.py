@@ -3,7 +3,7 @@ Validator Agent - 结果校验 Agent
 负责：结果判定、错误归因、状态说明
 """
 from typing import Dict, Any
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from loguru import logger
 from datetime import datetime
 

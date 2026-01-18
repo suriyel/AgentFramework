@@ -4,7 +4,7 @@ Tool Registry - 工具注册中心
 """
 from typing import Dict, Any, Callable, List, Optional
 from pydantic import BaseModel, Field
-from langchain.tools import BaseTool, StructuredTool
+from langchain_core.tools import BaseTool, StructuredTool
 from loguru import logger
 import inspect
 

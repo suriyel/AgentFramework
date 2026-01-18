@@ -2,6 +2,7 @@
 LangGraph Workflow - Agent 工作流定义
 实现 Plan-and-Execute 模式的 Multi-Agent 协作
 """
+import atexit
 from typing import Literal
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -24,9 +25,21 @@ class AgentWorkflow:
         Args:
             checkpoint_db_path: Checkpoint 数据库路径
         """
-        self.checkpoint_saver = SqliteSaver.from_conn_string(checkpoint_db_path)
+        self.saver_manager = SqliteSaver.from_conn_string(checkpoint_db_path)
+        self.checkpoint_saver = self.saver_manager.__enter__()
         self.graph = self._build_graph()
+        # 注册退出钩子：当程序结束时，自动调用 self.close
+        atexit.register(self.close)
         logger.info("Agent workflow initialized")
+
+    def close(self):
+        """释放资源，关闭数据库连接"""
+        try:
+            # 相当于执行了 with 块结束时的清理工作
+            self.saver_manager.__exit__(None, None, None)
+            logger.info("Agent workflow checkpointer connection closed.")
+        except Exception as e:
+            logger.error(f"Error closing checkpointer: {e}")
 
     def _build_graph(self) -> StateGraph:
         """构建 LangGraph"""

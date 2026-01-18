@@ -3,6 +3,10 @@ langchain>=0.2.0
 langchain-community>=0.2.0
 langgraph>=0.2.0
 langchain-openai>=0.1.0
+langgraph-checkpoint-sqlite>=2.0.0
+langchain-huggingface>=0.0.3
+langchain-chroma>=0.1.0
+langchain-text-splitters>=0.2.0
 
 # LLM Providers
 dashscope>=1.14.0  # 阿里百炼
@@ -24,6 +28,7 @@ python-multipart>=0.0.6
 sqlalchemy>=2.0.25
 psycopg2-binary>=2.9.9
 alembic>=1.13.1
+asyncpg>=0.29.0
 
 # Redis
 redis>=5.0.1
