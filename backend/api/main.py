@@ -34,11 +34,12 @@ async def lifespan(app: FastAPI):
 
     # 初始化数据库
     try:
-        # 如果 db_manager 是异步的，这里可能需要 await
         db_manager.create_tables()
         logger.success("Database tables initialized")
     except Exception as e:
-        logger.error(f"Database initialization failed: {e}")
+        logger.warning(f"Database initialization failed: {e}")
+        logger.warning("Continuing without persistent database (checkpoints only)")
+        # 应用仍可运行，只是不保存到 PostgreSQL
 
     logger.success("Application startup complete")
 

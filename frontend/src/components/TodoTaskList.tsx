@@ -3,7 +3,7 @@
  * 展示任务执行步骤、状态、进度
  */
 import { useState } from 'react'
-import { ChevronDown, CheckCircle2, Clock, AlertCircle, Loader2, Tool } from 'lucide-react'
+import { ChevronDown, CheckCircle2, Clock, AlertCircle, Loader2, Wrench } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface TaskStep {
@@ -173,7 +173,7 @@ export default function TodoTaskList({ task }: TodoTaskListProps) {
                   {/* Tool Info */}
                   {step.tool_name && (
                     <div className="flex items-center gap-1 mt-2">
-                      <Tool className="w-3 h-3 text-muted" />
+                      <Wrench className="w-3 h-3 text-muted" />
                       <p className="text-xs text-muted">
                         Tool: <span className="font-mono text-foreground">{step.tool_name}</span>
                       </p>
